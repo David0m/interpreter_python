@@ -1,0 +1,8 @@
+{% load static %}
+<h1 class="tasks-list-title">Список задач</h1>
+<head> <link rel="stylesheet" href="{% static 'css/styles.css' %}"> </head>
+<ul class="tasks-list">
+  {% for task in tasks %}
+  <li><a href="{% url 'index:tasks' task.id %}">{{ task.title }}</a></li>
+  {% endfor %}
+</ul>

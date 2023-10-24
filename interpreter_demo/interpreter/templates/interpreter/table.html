@@ -1,0 +1,28 @@
+{% load static %}
+<table id="testTable">
+    <tr>  
+        <th></th> 
+        <th>Вводные данные</th>
+        <th>Правильный ответ</th>
+        <th>Выходные данные</th>
+        <th>Результат</th>
+    </tr>
+    {% for test in testdata %}
+    <tr>
+        <td>
+            <button class="testButton" data-vvod="{{ test.vvod }}" data-rightres="{{ test.RightRes }}">Запустить тест</button>
+        </td>
+        <input type="hidden" name="vvod" id="vvod" value="">
+        <td class="input">{{ test.vvod }}</td>
+        <td class="expected">{{ test.RightRes }}</td>
+        <td class="output"></td>
+        <td class="result">
+            {% if test.Result == True %}
+              <img src="{% static 'img/check.png' %}" alt="true">
+            {% else %}
+              <img src="{% static 'img/cross.png' %}" alt="false">
+            {% endif %}
+          </td>
+    </tr>
+    {% endfor %}
+</table>

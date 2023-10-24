@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/home-button.css' %}">
+    <title>Успешно отправлено</title>
+</head>
+<body>
+    <p>Решение успешно отправлено!</p><br>
+    <a href="{% url 'index:interpreter' %}" class="home-button">Вернуться на главную страницу</a>
+</body>
+</html>

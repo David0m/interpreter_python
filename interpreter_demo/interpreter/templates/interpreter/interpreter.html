@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.4.12/src/ace.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+          rel="stylesheet">
+</head>
+          
+<body>
+    {% include 'interpreter/formcode.html' %}
+    {% include 'interpreter/table.html' %}
+
+    <div class="container-buttons">
+        <a href="{% url 'index:task_list' %}" class="back_to_tasks-button">К списку заданий</a>
+        <button class="course_task-button" id="sendButtonTesting" type="submit">ОТПРАВИТЬ НА ПРОВЕРКУ</button>
+    </div>
+
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var editor = ace.edit("python-code");
+            editor.setTheme("ace/theme/twilight");
+            editor.getSession().setMode("ace/mode/python");
+
+            editor.getSession().setValue("{{ task_description|escapejs }}");
+    
+            document.getElementById("codeForm").addEventListener('submit', function(event){
+                event.preventDefault(); 
+                
+                document.getElementById("code").value = editor.getSession().getValue();
+    
+               
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'index:interpreter' %}",
+                    data: {
+                        code: $('#code').val(), 
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                    },
+                    success: function(data){
+                        if(data.error_message) {
+                            $('#errorMessage').show().html('ОШИБКА! ' + data.error_message);  
+                            $('#iputdata').val('');
+                            $('#outputdata').val('');
+                        } else {
+                            $('#errorMessage').hide();  
+                            $('#iputdata').val(data.local_vars);
+                            $('#outputdata').val(data.code_result);
+                        }
+                    }            
+                                    
+                });
+            });
+
+            $(document).ready(function(){
+                $('.testButton').on('click', function() {
+                    var row = $(this).closest("tr");
+                    var input = $(row).find(".input").text();
+                    $("#vvod").val(input);
+                    $.ajax({
+                        type: 'POST',
+                        url: '/run_test/',
+                        data: {
+                            'vvod': input,
+                            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+                        },
+                        success: function(data){
+                          row.find("td.output").text(data.outputdata); 
+                          var resultImage = data.Result ? '{% static 'img/check.png' %}' : '{% static 'img/cross.png' %}';
+                          row.find("td.result").html('<img src="' + resultImage + '" alt="' + data.Result + '">');
+                        }            
+                    });
+                });
+            });
+
+            $("#sendButtonTesting").on('click', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'index:save_code' %}",
+                    data: {
+                         'code': $('#code').val(), 
+                         'iputdata': $('#iputdata').val(), 
+                         'outputdata': $('#outputdata').val(), 
+                         'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+                    },
+                    success: function(data) {
+                        window.location.href = "{% url 'index:send_success' %}";
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        alert("Произошла ошибка при загрузке. Пожалуйста, попробуйте позже");
+                    }
+                });
+            });
+            
+        };
+    </script>
+    
+</body>
+</html>

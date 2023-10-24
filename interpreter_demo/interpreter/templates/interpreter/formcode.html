@@ -1,0 +1,32 @@
+{% load static %}
+<div class="container">
+    <form method="POST" id="codeForm">
+        {% csrf_token %}
+        <div class="button-wrapper">
+            <button type="submit">
+                <span>Запустить</span> 
+                <img class="button-image" src="{% static 'img/play.png' %}">
+            </button>
+        </div>
+        <div class="form-wrapper">
+            <label for="code"></label>
+            <div id="python-code" style="height: 250px; width: 1200px;" class="language-python"></div><br>
+            <input type="hidden" name="code" id="code">
+
+        <div class="data-forms-container">
+            <div class="data-form">
+                <label for="iputdata">Входные данные</label>
+                <textarea readonly name="iputdata" id="iputdata" style="height: 250px; width: 562px; resize: none;"></textarea>
+            </div>
+            <div class="data-form">
+                <label for="outputdata">Выходные данные</label>
+                <textarea readonly name="outputdata" id="outputdata" style="height: 250px; width: 562px; resize: none;"></textarea>
+            </div>
+        </div>
+        </div>
+    </form>
+    
+</div>
+<div id="errorMessage">Ошибка! </div>
+<div id="result">
+</div>

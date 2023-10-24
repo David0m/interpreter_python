@@ -1,0 +1,275 @@
+body {
+    font-size: 14px;
+    font-family: 'Montserrat',sans-serif;
+    overflow-x: hidden;
+}
+
+
+table {
+    width: 1040px;
+    min-height: 300px;
+    margin-top: -400px;
+    margin-left: 125px;
+    border-collapse: collapse;
+    border: 4px solid #558AF1;
+    border-radius: 55px;
+    padding: 35px 50px 20px 12px;
+    
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    right: 730px;
+    bottom: 450px;
+    margin: 30px 0;
+}
+
+.course_task-button {
+    font-size: 20px;                
+    font-weight: bold;              
+    color: white;                   
+    background-color: #2e046c;      
+    border: none;                   
+    padding: 15px 32px;             
+    text-align: center;            
+    text-decoration: none;          
+    display: inline-block;
+    transition-duration: 0.4s;      
+    cursor: pointer;                
+    margin: 30px 0;                 
+    border-radius: 12px;
+  
+}
+
+.course_task-button:hover {
+    background: blue;
+}
+
+.back_to_tasks-button {
+    font-size: 20px;                
+    font-weight: bold;             
+    color: white;                  
+    background-color: #c8131f;      
+    border: none;                  
+    padding: 15px 32px;            
+    text-align: center;             
+    text-decoration: none;         
+    display: inline-block;
+    transition-duration: 0.4s;   
+    cursor: pointer;               
+    margin: 30px; 
+    position: relative;     
+    left: 920px;          
+    border-radius: 12px;            
+}
+
+.back_to_tasks-button:hover {
+    background: rgb(98, 5, 25);
+}
+
+
+
+table th {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+
+table td {
+    padding: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+
+table tr.practice_tasks-right-table-tr {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+
+#codeForm {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 1200px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 500px;
+}
+
+#errorMessage {
+    position: absolute;
+    top: 10px;
+    width: 500px;
+    height: 3px;
+    display: none;
+    border: 1px solid #D20A11;
+    box-shadow: 0px 2px 4px 4px #A60000;
+    border-radius: 82px;
+    margin: 50px 0 0 403px;
+    color: #A60000;
+    display: none;
+    padding: 47px 50px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 29px;
+}
+
+
+#codeForm textarea {
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+    background: #323232;
+    padding: 10px 20px 10px 10px;
+    margin-bottom: 20px;
+}
+
+.data-form {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.data-forms-container {
+    display: flex;
+    gap: 20px;
+}
+
+
+.form-group {
+    flex: 1 0 45%;
+    margin: 10px;
+}
+
+#codeForm label {
+    font-weight: 500;
+    font-size: 24px;
+    color: #150E3C;
+    margin-bottom: 25px;
+}
+
+#codeForm input[type="text"] {
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+    width: 562px;
+    height: 250px;
+    background: #323232;
+    padding: 10px 20px 10px 10px;
+    margin-bottom: 20px;
+}
+
+.button-wrapper button {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    height: 46px;
+    width: 157px;
+    background: rgba(134,187,81,0.55);
+    border-radius: 12px;
+    border-style: none ;
+    transition: all .1s linear;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+#codeForm .button-wrapper button span {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #150e3c;
+    position: relative; 
+    right: 20px; 
+   
+}
+
+.button-image {
+    position: absolute;  
+    right: 20px;  
+    top: 50%;  
+    transform: translateY(-50%);  
+    width: 24px; 
+    height: 24px; 
+}
+
+
+#codeForm .button-wrapper button:hover {
+    background: rgba(134, 187, 81, 0.7);
+}
+
+#python-code {
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+    width: 1042px;
+    height: 432px;
+    background: #323232;
+    padding: 60px 20px 75px 10px;
+}
+
+.tasks-list-title {
+    text-align: center;
+    margin-top: 30px;
+    color: #263238;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.tasks-list {
+    list-style-type: none;
+    padding: 20px;
+    width: 70%;
+    margin: auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 30px;
+}
+
+.tasks-list li {
+    border-bottom: 1px solid #CFD8DC;
+    padding: 20px;
+    font-size: 18px;
+    color: #455A64;
+}
+
+.tasks-list li:last-child {
+    border-bottom: none; 
+}
+
+.tasks-list li a {
+    text-decoration: none;
+    color: #37474F;
+}
+
+.tasks-list li a:hover {
+    background-color: #62b3d9;
+    transition-duration: 0.5s;
+    box-shadow: 0px 8px 16px 0px white;
+    border-radius: 5px;
+
+}
