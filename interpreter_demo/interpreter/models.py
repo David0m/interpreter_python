@@ -50,9 +50,11 @@ class TestData(models.Model):
 
 
 class UserCode(models.Model):
-    code = models.TextField()
-    iputdata = models.CharField(max_length=255)
-    outputdata = models.CharField(max_length=255)
+    code = models.TextField(verbose_name='Код пользователя')
+    iputdata = models.CharField(max_length=255, verbose_name='Входные данные')
+    outputdata = models.CharField(max_length=255,
+                                  verbose_name='Результат работы кода'
+                                  )
 
     class Meta:
         verbose_name = 'Пользовательский код'
